@@ -27,3 +27,17 @@ const images = [
     alt: 'Zebras on Zebra',
   },
 ];
+const classEl= document.querySelector(".gallery");
+
+function createImages(array) {
+  return array
+    .map(
+      (element) => `
+    <li>
+     <img src="${element.url}" alt="${element.alt}" />    
+    </li>`
+    )
+    .join("");
+    
+}
+classEl.insertAdjacentHTML("beforeend", createImages(images));
