@@ -33,7 +33,7 @@ function createImages(array) {
   return array
     .map(
       (element) => `
-    <li>
+    <li class="item-img">
      <img src="${element.url}" alt="${element.alt}" />    
     </li>`
     )

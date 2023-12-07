@@ -12,18 +12,206 @@ body {
   color: #212121;
   line-height: 1.5;
 }
+/* task-01 */
+
+ul {
+  list-style-type: none; 
+padding-left: 0;  
+}
+
+h2 {
+  color: #2E2F42;
+  margin-top: 0;
+  margin-bottom: 16px;
+  width: 360px; 
+font-family: Montserrat;
+font-size: 24px;
+font-weight: 600;
+line-height: 1.33; 
+letter-spacing: 0.03em;
+}
+
+.item {
+padding: 16px;
+width: 392px; 
+margin-bottom: 24px;
+background-color: #F6F6FE;
+font-family: Montserrat;
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5em;
+letter-spacing: 0.04em;
+border: 0;
+border-radius: 8px;
+}
+
+ul > li {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+border: 1px solid #808080;
+width: 360px;
+}
+
+.item ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* task-02 */
+.item-img {
+  border: 0;
+  padding: 0;
+  width: 360px;
+}
 .gallery {
   list-style: none;
   padding: 0;
-  margin: 20px 5px;
+  margin: 156px 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
+  row-gap: 48px;
   
 }
 img {
-  height: 500px;
-  width: 800px;
+  height: 100%;
+  width: 100%;
 }
+/* task-03 */
+
+#name-input {
+  color: #2E2F42;
+font-family: Montserrat;
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5em;
+letter-spacing: 0.04em;
+width: 360px;
+height: 40px;
+padding-left: 16px;
+margin-bottom: 16px;
+border-radius: 4px;
+border: 1px solid #808080;
+}
+h1{
+color: #2E2F42;
+font-family: Montserrat;
+font-size: 24px;
+font-weight: 600;
+line-height: 1.33; 
+letter-spacing: 0.03em;
+padding: 0;
+margin: 0;
+}
+
+/* task-04 */
+
+label {
+  display: block;
+  color: #2E2F42;
+font-family: Montserrat;
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5em;
+letter-spacing: 0.04em;
+}
+
+input {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 360px;
+  height: 40px;
+border-radius: 4px;
+border: 1px solid #808080;
+}
+button {
+  width: 86px;
+  height: 40px;
+  margin-top: 16px;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+border-radius: 8px;
+background: #4E75FF;
+color: #FFF;
+
+font-family: Montserrat;
+font-size: 16px;
+font-weight: 500;
+line-height: 1.33; 
+letter-spacing: 0.03em;
+}
+
+button:hover {
+  background-color: #6C8CFF;
+}
+input:hover {
+  border: 1px solid #000;
+}
+
+ /* task-05 */
+.widget {
+width: 345px;
+height: 280px;
+padding: 100px 88px;
+text-align: center;
+}
+ .change-color{
+  width: 148px;
+  height: 40px;
   
+ }
+p{
+  color: #2E2F42;
+font-family: Montserrat;
+font-size: 16px;
+font-weight: 400;
+line-height: 1.5em;
+letter-spacing: 0.04em;
+margin: 0;
+}
+
+/* task-06 */
+#controls{
+  display: flex;
+  width: 468px;
+  height: 104px;
+  padding: 32px;
+align-items: start;
+gap: 16px;
+border-radius: 8px;
+background: #F6F6FE;
+align-items: center;
+
+}
+#controls > button {
+margin: 0;
+width: 120px;
+}
+[data-destroy]{
+  background: #FF4E4E;
+}
+
+[data-destroy]:hover{
+    #FF7070;
+  }
+
+#controls > input {
+  width: 150;
+}
+
+#boxes{
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 16px;
+  width: 468px;
+  height: auto;
+  padding: 32px;
+  border-radius: 8px;
+background: #F6F6FE;
+
+}
