@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.gallery-item {
+  border-radius: 4px;
+width: 360px;
+}
+.gallery-item:hover {
+  transform:scale(1.1); 
+}
+
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: 24px 156px;
+  display: flex;
+  flex-wrap: wrap;
+   justify-content: center; 
+  gap: 24px;
+  row-gap: 24px;
+  
+}
+.gallery-image {
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
