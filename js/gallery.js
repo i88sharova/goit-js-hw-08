@@ -80,10 +80,12 @@ const createGalleryItem = ({ preview, original, description }) => {
   listItem.appendChild(link);
   return listItem;
 };
+
 const appendGalleryItems = (container, items) => {
   const galleryItems = items.map(createGalleryItem);
   container.append(...galleryItems);
 };
+
 appendGalleryItems(galleryContainer, images);
 galleryContainer.addEventListener('click', onGalleryClick);
 
@@ -95,7 +97,8 @@ function onGalleryClick(event) {
     openModal(largeImageSource);
   }
 }
-import * as basicLightbox from 'basiclightbox';
+
+let state; 
 
 function openModal(imageSource) {
   const modalImage = `
@@ -103,5 +106,24 @@ function openModal(imageSource) {
       <img src="${imageSource}" width="800" height="600" alt="Large Image">
     </div>
   `;
-  const modalBox = basicLightbox.create(modalImage).show();
+
+  state = basicLightbox.create(modalImage, {
+    onShow: (modalstate) => {
+      window.addEventListener('keydown', onEscKeyPress);
+    },
+    onClose: (modalstate) => {
+      window.removeEventListener('keydown', onEscKeyPress);
+    },
+  });
+
+  state.show();
+}
+
+function onEscKeyPress(event) {
+  const ESC_KEY_CODE = 'Escape';
+  const isEscKey = event.code === ESC_KEY_CODE;
+
+  if (isEscKey) {
+    state.close();
+  }
 }
