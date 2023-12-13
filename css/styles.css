@@ -3,28 +3,31 @@
 }
 
 .gallery-item {
-  border-radius: 4px;
-width: 360px;
+  display: block;
+  width: calc((100% - 48px) / 3);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
 }
 .gallery-item:hover {
-  transform:scale(1.1); 
+  transform:scale(1.03); 
 }
 
 .gallery {
   list-style: none;
-  padding: 0;
-  margin: 24px 156px;
-  display: flex;
-  flex-wrap: wrap;
-   justify-content: center; 
-  gap: 24px;
-  row-gap: 24px;
-  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 .gallery-image {
-  height: 100%;
   width: 100%;
+  border-radius: 4px;
 }
+
+
 
 
 

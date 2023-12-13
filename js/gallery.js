@@ -63,67 +63,125 @@ const images = [
     description: "Lighthouse Coast Sea",
   },
 ];
+// const galleryContainer = document.querySelector('.gallery');
+
+// const createGalleryItem = ({ preview, original, description }) => {
+//   const listItem = document.createElement('li');
+//   listItem.classList.add('gallery-item');
+//   const link = document.createElement('a');
+//   link.classList.add('gallery-link');
+//   link.href = original;
+//   const image = document.createElement('img');
+//   image.classList.add('gallery-image');
+//   image.src = preview;
+//   image.dataset.source = original;
+//   image.alt = description;
+//   link.appendChild(image);
+//   listItem.appendChild(link);
+//   return listItem;
+// };
+
+// const appendGalleryItems = (container, items) => {
+//   const galleryItems = items.map(createGalleryItem);
+//   container.append(...galleryItems);
+// };
+
+// appendGalleryItems(galleryContainer, images);
+// galleryContainer.addEventListener('click', onGalleryClick);
+
+// function onGalleryClick(event) {
+//   event.preventDefault();
+//   const target = event.target;
+//   if (target.classList.contains('gallery-image')) {
+//     const largeImageSource = target.dataset.source;
+//     openModal(largeImageSource);
+//   }
+// }
+
+// let state; 
+
+// function openModal(imageSource) {
+//   const modalImage = `
+//     <div class="modal">
+//       <img src="${imageSource}" width="800" height="600" alt="Large Image">
+//     </div>
+//   `;
+
+//   state = basicLightbox.create(modalImage, {
+//     onShow: (modalstate) => {
+//       window.addEventListener('keydown', onEscKeyPress);
+//     },
+//     onClose: (modalstate) => {
+//       window.removeEventListener('keydown', onEscKeyPress);
+//     },
+//   });
+
+//   state.show();
+// }
+
+// function onEscKeyPress(event) {
+//   const ESC_KEY_CODE = 'Escape';
+//   const isEscKey = event.code === ESC_KEY_CODE;
+
+//   if (isEscKey) {
+//     state.close();
+//   }
+// }
 const galleryContainer = document.querySelector('.gallery');
 
-const createGalleryItem = ({ preview, original, description }) => {
-  const listItem = document.createElement('li');
-  listItem.classList.add('gallery-item');
-  const link = document.createElement('a');
-  link.classList.add('gallery-link');
-  link.href = original;
-  const image = document.createElement('img');
-  image.classList.add('gallery-image');
-  image.src = preview;
-  image.dataset.source = original;
-  image.alt = description;
-  link.appendChild(image);
-  listItem.appendChild(link);
-  return listItem;
-};
+const galleryMarkup = images.reduce((item, image) => item +=
+`<li class="gallery-item">
+    <a class="gallery-link" href="${image.original}">
+      <img
+        class="gallery-image"
+        src="${image.preview}"
+        data-source="${image.original}"
+        alt="${image.description}"
+      />
+    </a>
+  </li>
+`, '');
 
-const appendGalleryItems = (container, items) => {
-  const galleryItems = items.map(createGalleryItem);
-  container.append(...galleryItems);
-};
+galleryContainer.innerHTML = galleryMarkup;
 
-appendGalleryItems(galleryContainer, images);
 galleryContainer.addEventListener('click', onGalleryClick);
 
 function onGalleryClick(event) {
   event.preventDefault();
   const target = event.target;
-  if (target.classList.contains('gallery-image')) {
-    const largeImageSource = target.dataset.source;
-    openModal(largeImageSource);
-  }
-}
 
-let state; 
+  if (target.nodeName !== 'IMG') {
+    return;
+  }
+
+  const largeImageSource = target.dataset.source;
+  openModal(largeImageSource);
+}
 
 function openModal(imageSource) {
   const modalImage = `
     <div class="modal">
-      <img src="${imageSource}" width="800" height="600" alt="Large Image">
+      <img src="${imageSource}" width="1000" alt="Large Image">
     </div>
   `;
 
-  state = basicLightbox.create(modalImage, {
-    onShow: (modalstate) => {
-      window.addEventListener('keydown', onEscKeyPress);
+  const state = basicLightbox.create(modalImage, {
+    onShow: (modalState) => {
+      window.addEventListener('keydown', (event) => onEscKeyPress(event, modalState));
     },
-    onClose: (modalstate) => {
-      window.removeEventListener('keydown', onEscKeyPress);
+    onClose: (modalState) => {
+      window.removeEventListener('keydown', (event) => onEscKeyPress(event, modalState));
     },
   });
 
   state.show();
 }
 
-function onEscKeyPress(event) {
+function onEscKeyPress(event, modalState) {
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = event.code === ESC_KEY_CODE;
 
   if (isEscKey) {
-    state.close();
+    modalState.close();
   }
 }
